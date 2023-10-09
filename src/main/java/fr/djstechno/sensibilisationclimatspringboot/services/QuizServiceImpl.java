@@ -144,6 +144,43 @@ public class QuizServiceImpl implements QuizService {
         quiz1.setInfo("Un jour passé à Pékin en respirant l’air a les mêmes effets sur la santé que fumer 21 cigarettes !");
         this.quizs.add(quiz1);
 
+        Quiz quiz2 = new Quiz();
+        quiz2.setId("QZ002");
+        quiz2.setLibelle("Quiz Niveau Intermédiaire");
+        quiz2.setDescription("Ce quiz niveau intermédiaire monte d'un cran sur le changement climatique.");
+
+        questions = new ArrayList<>();
+
+        question1 = new Question();
+        question1.setId(1);
+        question1.setLibelle("En quelle année le GEIC a été crée ?");
+
+        options = new ArrayList<>();
+        option1 = new Option();
+        option1.setId("A");
+        option1.setValeur("1988");
+        options.add(option1);
+
+        option2 = new Option();
+        option2.setId("B");
+        option2.setValeur("1999");
+        options.add(option2);
+
+        option3 = new Option();
+        option3.setId("C");
+        option3.setValeur("2005");
+        options.add(option3);
+
+        question1.setOptions(options);
+        question1.setIdResponse("A");
+        question1.setExplication("Le GEIC a bien été crée en 1988");
+        questions.add(question1);
+
+        quiz2.setQuestions(questions);
+        quiz2.setInfo("Un jour passé à Pékin en respirant l’air a les mêmes effets sur la santé que fumer 21 cigarettes !");
+
+        this.quizs.add(quiz2);
+
     }
 
     @Override

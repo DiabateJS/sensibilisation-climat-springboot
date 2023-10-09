@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import fr.djstechno.sensibilisationclimatspringboot.models.Quiz;
@@ -20,6 +21,11 @@ public class QuizController {
     @GetMapping("/quizs")
     public List<Quiz> getQuizs() {
         return this.quizService.getQuizs();
+    }
+
+    @GetMapping("/quizs/{id}")
+    public Quiz getQuiz(@PathVariable int id){
+        return this.quizService.getQuiz(id);
     }
 
 }
