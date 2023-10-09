@@ -1,25 +1,27 @@
 package fr.djstechno.sensibilisationclimatspringboot.services;
 
-import fr.djstechno.sensibilisationclimatspringboot.models.Option;
-import fr.djstechno.sensibilisationclimatspringboot.models.Question;
-import fr.djstechno.sensibilisationclimatspringboot.models.Quiz;
-import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import org.springframework.stereotype.Service;
+
+import fr.djstechno.sensibilisationclimatspringboot.models.Option;
+import fr.djstechno.sensibilisationclimatspringboot.models.Question;
+import fr.djstechno.sensibilisationclimatspringboot.models.Quiz;
 
 @Service
 public class QuizServiceImpl implements QuizService {
 
     private List<Quiz> quizs;
 
-    private void init(){
-        this.quizs =  new ArrayList<Quiz>();
+    private void init() {
+        this.quizs = new ArrayList<>();
 
         Quiz quiz1 = new Quiz();
         quiz1.setId("QZ001");
         quiz1.setLibelle("Quiz Niveau 1");
+        quiz1.setDescription("Ce quiz niveau débutant permet d'évaluer votre connaissance du changement climatique.");
 
         List<Question> questions = new ArrayList<>();
 
@@ -27,7 +29,7 @@ public class QuizServiceImpl implements QuizService {
         question1.setId(1);
         question1.setLibelle("Quelle serait la température de la Terre sans atmosphère ?");
 
-        List<Option> options = new ArrayList<Option>();
+        List<Option> options = new ArrayList<>();
         Option option1 = new Option();
         option1.setId("A");
         option1.setValeur("+15 °C");
@@ -57,7 +59,7 @@ public class QuizServiceImpl implements QuizService {
         question2.setId(2);
         question2.setLibelle("Quel gaz a l'effet de serre le plus puissant ?");
 
-        options = new ArrayList<Option>();
+        options = new ArrayList<>();
         option1 = new Option();
         option1.setId("A");
         option1.setValeur("CO2");
@@ -87,7 +89,7 @@ public class QuizServiceImpl implements QuizService {
         question3.setId(3);
         question3.setLibelle("Où va la majorité du CO2 émis par l’Homme ?");
 
-        options = new ArrayList<Option>();
+        options = new ArrayList<>();
         option1 = new Option();
         option1.setId("A");
         option1.setValeur("Dans l'atmosphère");
@@ -112,7 +114,7 @@ public class QuizServiceImpl implements QuizService {
         question4.setId(4);
         question4.setLibelle("En hiver et à quantité égale, lequel de ces aliments émet le plus de CO2 ?");
 
-        options = new ArrayList<Option>();
+        options = new ArrayList<>();
         option1 = new Option();
         option1.setId("A");
         option1.setValeur("Banane de Martinique");
@@ -143,16 +145,21 @@ public class QuizServiceImpl implements QuizService {
         this.quizs.add(quiz1);
 
     }
-    public List<Quiz> getQuizs(){
+
+    @Override
+    public List<Quiz> getQuizs() {
         this.init();
         return this.quizs;
     }
-    public Quiz getQuiz(int id){
+
+    @Override
+    public Quiz getQuiz(int id) {
         this.init();
         return this.quizs.stream().filter(q -> q.getId().equals(String.valueOf(id))).collect(Collectors.toList()).get(0);
     }
 
-    public List<Question> getQuizQuestions(int id){
+    @Override
+    public List<Question> getQuizQuestions(int id) {
         Quiz quiz = this.getQuiz(id);
         return quiz.getQuestions();
     }

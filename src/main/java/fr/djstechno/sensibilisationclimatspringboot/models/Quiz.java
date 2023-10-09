@@ -1,10 +1,10 @@
 package fr.djstechno.sensibilisationclimatspringboot.models;
 
+import java.util.List;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -12,6 +12,7 @@ import java.util.List;
 public class Quiz {
     private String id;
     private String libelle;
+    private String description;
     private List<Question> questions;
     private String info;
 }
