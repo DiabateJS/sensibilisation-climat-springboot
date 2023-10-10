@@ -190,13 +190,13 @@ public class QuizServiceImpl implements QuizService {
     }
 
     @Override
-    public Quiz getQuiz(int id) {
+    public Quiz getQuiz(String id) {
         this.init();
         return this.quizs.stream().filter(q -> q.getId().equals(String.valueOf(id))).collect(Collectors.toList()).get(0);
     }
 
     @Override
-    public List<Question> getQuizQuestions(int id) {
+    public List<Question> getQuizQuestions(String id) {
         Quiz quiz = this.getQuiz(id);
         return quiz.getQuestions();
     }
