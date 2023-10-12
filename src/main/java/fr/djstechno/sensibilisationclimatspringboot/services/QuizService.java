@@ -8,7 +8,7 @@ import fr.djstechno.sensibilisationclimatspringboot.models.Quiz;
 public interface QuizService {
     List<Quiz> getQuizs();
 
-    Quiz getQuiz(String id);
+    Quiz getQuiz(int id);
 
-    List<Question> getQuizQuestions(String id);
+    List<Question> getQuizQuestions(int id);
 }

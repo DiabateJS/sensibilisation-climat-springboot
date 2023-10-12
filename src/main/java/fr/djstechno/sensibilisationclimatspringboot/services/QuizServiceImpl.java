@@ -19,7 +19,8 @@ public class QuizServiceImpl implements QuizService {
         this.quizs = new ArrayList<>();
 
         Quiz quiz1 = new Quiz();
-        quiz1.setId("QZ001");
+        quiz1.setId(1);
+        quiz1.setCode("QZ001");
         quiz1.setLibelle("Quiz Niveau 1");
         quiz1.setDescription("Ce quiz niveau débutant permet d'évaluer votre connaissance du changement climatique.");
 
@@ -145,7 +146,8 @@ public class QuizServiceImpl implements QuizService {
         this.quizs.add(quiz1);
 
         Quiz quiz2 = new Quiz();
-        quiz2.setId("QZ002");
+        quiz2.setId(2);
+        quiz2.setCode("QZ002");
         quiz2.setLibelle("Quiz Niveau Intermédiaire");
         quiz2.setDescription("Ce quiz niveau intermédiaire monte d'un cran sur le changement climatique.");
 
@@ -190,13 +192,13 @@ public class QuizServiceImpl implements QuizService {
     }
 
     @Override
-    public Quiz getQuiz(String id) {
+    public Quiz getQuiz(int id) {
         this.init();
-        return this.quizs.stream().filter(q -> q.getId().equals(String.valueOf(id))).collect(Collectors.toList()).get(0);
+        return this.quizs.stream().filter(q -> q.getId() == id).collect(Collectors.toList()).get(0);
     }
 
     @Override
-    public List<Question> getQuizQuestions(String id) {
+    public List<Question> getQuizQuestions(int id) {
         Quiz quiz = this.getQuiz(id);
         return quiz.getQuestions();
     }
