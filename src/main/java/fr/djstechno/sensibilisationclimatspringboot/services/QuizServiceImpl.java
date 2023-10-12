@@ -2,18 +2,23 @@ package fr.djstechno.sensibilisationclimatspringboot.services;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
+import fr.djstechno.sensibilisationclimatspringboot.repositories.QuizRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import fr.djstechno.sensibilisationclimatspringboot.models.Option;
 import fr.djstechno.sensibilisationclimatspringboot.models.Question;
-import fr.djstechno.sensibilisationclimatspringboot.models.Quiz;
+import fr.djstechno.sensibilisationclimatspringboot.entities.Quiz;
 
 @Service
 public class QuizServiceImpl implements QuizService {
 
-    private List<Quiz> quizs;
+    @Autowired
+    private QuizRepository quizRepository;
+    /*private List<Quiz> quizs;
 
     private void init() {
         this.quizs = new ArrayList<>();
@@ -183,23 +188,21 @@ public class QuizServiceImpl implements QuizService {
 
         this.quizs.add(quiz2);
 
-    }
+    }*/
 
     @Override
     public List<Quiz> getQuizs() {
-        this.init();
-        return this.quizs;
+        return this.quizRepository.findAll();
     }
 
     @Override
-    public Quiz getQuiz(int id) {
-        this.init();
-        return this.quizs.stream().filter(q -> q.getId() == id).collect(Collectors.toList()).get(0);
+    public Quiz getQuiz(Long id) {
+        Optional<Quiz> result = this.quizRepository.findById(id);
+        return result.get();
     }
 
     @Override
     public List<Question> getQuizQuestions(int id) {
-        Quiz quiz = this.getQuiz(id);
-        return quiz.getQuestions();
+        return new ArrayList<Question>();
     }
 }
