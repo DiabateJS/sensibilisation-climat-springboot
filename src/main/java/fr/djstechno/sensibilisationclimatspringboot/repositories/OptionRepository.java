@@ -4,8 +4,9 @@ import javax.transaction.Transactional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import fr.djstechno.sensibilisationclimatspringboot.entities.Quiz;
+import fr.djstechno.sensibilisationclimatspringboot.entities.Option;
 
 @Transactional
-public interface QuizRepository extends JpaRepository<Quiz, Long> {
+public interface OptionRepository extends JpaRepository<Option, Long> {
+
 }

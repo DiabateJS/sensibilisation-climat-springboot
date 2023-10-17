@@ -1,4 +1,5 @@
 package fr.djstechno.sensibilisationclimatspringboot.models;
+
 import java.util.List;
 
 import lombok.AllArgsConstructor;
@@ -9,7 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Question {
-    private int id;
+    private Long id;
     private String libelle;
     private List<Option> options;
     private String idResponse;
