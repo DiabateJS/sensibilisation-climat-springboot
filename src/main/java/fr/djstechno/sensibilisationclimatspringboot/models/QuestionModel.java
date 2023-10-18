@@ -9,11 +9,10 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Quiz {
+public class QuestionModel {
     private Long id;
-    private String code;
     private String libelle;
-    private String description;
-    private List<Question> questions;
-    private String info;
+    private List<OptionModel> options;
+    private String idResponse;
+    private String explication;
 }

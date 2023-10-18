@@ -6,7 +6,7 @@ import lombok.experimental.Accessors;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Option {
+public class OptionModel {
     private String id;
     private String valeur;
 }

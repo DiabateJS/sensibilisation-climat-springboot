@@ -2,12 +2,13 @@ package fr.djstechno.sensibilisationclimatspringboot.services;
 
 import java.util.List;
 
-import fr.djstechno.sensibilisationclimatspringboot.models.Question;
+import fr.djstechno.sensibilisationclimatspringboot.models.QuestionModel;
+import fr.djstechno.sensibilisationclimatspringboot.models.QuizModel;
 
 public interface QuizService {
-    List<fr.djstechno.sensibilisationclimatspringboot.models.Quiz> getQuizs();
+    List<QuizModel> getQuizs();
 
-    fr.djstechno.sensibilisationclimatspringboot.models.Quiz getQuiz(Long id);
+    QuizModel getQuiz(Long id);
 
-    List<Question> getQuizQuestions(Long id);
+    List<QuestionModel> getQuizQuestions(Long id);
 }

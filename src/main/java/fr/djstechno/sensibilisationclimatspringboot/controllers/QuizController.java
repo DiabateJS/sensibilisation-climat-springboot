@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import fr.djstechno.sensibilisationclimatspringboot.models.Quiz;
+import fr.djstechno.sensibilisationclimatspringboot.models.QuizModel;
 import fr.djstechno.sensibilisationclimatspringboot.services.QuizService;
 
 @CrossOrigin(origins = "*")
@@ -19,12 +19,12 @@ public class QuizController {
     private QuizService quizService;
 
     @GetMapping("/quizs")
-    public List<Quiz> getQuizs() {
+    public List<QuizModel> getQuizs() {
         return this.quizService.getQuizs();
     }
 
     @GetMapping("/quizs/{id}")
-    public Quiz getQuiz(@PathVariable Long id) {
+    public QuizModel getQuiz(@PathVariable Long id) {
         return this.quizService.getQuiz(id);
     }
 

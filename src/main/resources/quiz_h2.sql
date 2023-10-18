@@ -1,5 +1,5 @@
-insert into ASC_QUIZ values (1, 'QZ001','Quiz Niveau 1','Un jour passé à Pékin en respirant l air a les mêmes effets sur la santé que fumer 21 cigarettes !','Ce quiz niveau débutant permet d évaluer votre connaissance du changement climatique.');
-insert into ASC_QUIZ values (2, 'QZ002','Quiz Niveau Intermédiaire','Un jour passé à Pékin en respirant l air a les mêmes effets sur la santé que fumer 21 cigarettes !','Ce quiz niveau intermédiaire monte d un cran sur le changement climatique.');
+insert into ASC_QUIZ values (1, 'QZ001','Ce quiz niveau débutant permet d évaluer votre connaissance du changement climatique.','Un jour passé à Pékin en respirant l air a les mêmes effets sur la santé que fumer 21 cigarettes !','Quiz Niveau 1');
+insert into ASC_QUIZ values (2, 'QZ002','Ce quiz niveau intermédiaire monte d un cran sur le changement climatique.','Un jour passé à Pékin en respirant l air a les mêmes effets sur la santé que fumer 21 cigarettes !','Quiz Niveau Intermédiaire');
 
 -- Quiz 1
 insert into ASC_QUESTION values (1, 'Heureusement, le phénomène naturel de l effet de serre conserve dans l atmosphère une partie de la chaleur du soleil !', 1, 'A' , 'Quelle serait la température de la Terre sans atmosphère ?');
