@@ -52,6 +52,16 @@ public class QuizServiceImpl implements QuizService {
                 q.setExplication(question.getExplication());
                 q.setLibelle(question.getLibelle());
                 q.setIdResponse(question.getIdResponse());
+                //Ajout des Options de la question
+                List<OptionEntity> optionsEntities = optionRepository.getQuestionOptions(question.getId());
+                List<OptionModel> optionsModel = new ArrayList<>();
+                for (OptionEntity optionEntity: optionsEntities){
+                    OptionModel optionModel = new OptionModel();
+                    optionModel.setId(optionEntity.getIdOption());
+                    optionModel.setValeur(optionEntity.getValeur());
+                    optionsModel.add(optionModel);
+                }
+                q.setOptions(optionsModel);
                 questionsModel.add(q);
             }
             quizModel.setQuestions(questionsModel);
