@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class QuestionModel {
     private Long id;
+    private Long ordre;
     private String libelle;
     private List<OptionModel> options;
     private String idResponse;

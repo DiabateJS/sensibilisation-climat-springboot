@@ -52,10 +52,11 @@ public class QuizServiceImpl implements QuizService {
                 q.setExplication(question.getExplication());
                 q.setLibelle(question.getLibelle());
                 q.setIdResponse(question.getIdResponse());
-                //Ajout des Options de la question
+                q.setOrdre(question.getOrdre());
+                // Ajout des Options de la question
                 List<OptionEntity> optionsEntities = optionRepository.getQuestionOptions(question.getId());
                 List<OptionModel> optionsModel = new ArrayList<>();
-                for (OptionEntity optionEntity: optionsEntities){
+                for (OptionEntity optionEntity : optionsEntities) {
                     OptionModel optionModel = new OptionModel();
                     optionModel.setId(optionEntity.getIdOption());
                     optionModel.setValeur(optionEntity.getValeur());
@@ -89,6 +90,7 @@ public class QuizServiceImpl implements QuizService {
                 questionModel.setLibelle(questionEntity.getLibelle());
                 questionModel.setExplication(questionEntity.getExplication());
                 questionModel.setIdResponse(questionEntity.getIdResponse());
+                questionModel.setOrdre(questionEntity.getOrdre());
                 // Ajout des Options de la question
                 List<OptionEntity> optionsEntities = optionRepository.getQuestionOptions(questionEntity.getId());
                 List<OptionModel> optionsModel = new ArrayList<>();
@@ -107,7 +109,28 @@ public class QuizServiceImpl implements QuizService {
     }
 
     @Override
-    public List<QuestionModel> getQuizQuestions(Long id) {
-        return new ArrayList<>();
+    public List<QuestionModel> getQuizQuestions(Long idQuiz) {
+        List<QuestionEntity> questionsEntities = this.questionRepository.getQuestionsById(idQuiz);
+        List<QuestionModel> questionsModels = new ArrayList<>();
+        for (QuestionEntity questionEntity : questionsEntities) {
+            QuestionModel questionModel = new QuestionModel();
+            questionModel.setId(questionEntity.getId());
+            questionModel.setOrdre(questionEntity.getOrdre());
+            questionModel.setLibelle(questionEntity.getLibelle());
+            questionModel.setIdResponse(questionEntity.getIdResponse());
+            questionModel.setExplication(questionEntity.getExplication());
+            // Ajout des options de la question
+            List<OptionEntity> optionsEntities = this.optionRepository.getQuestionOptions(questionEntity.getId());
+            List<OptionModel> optionsModel = new ArrayList<>();
+            for (OptionEntity optionEntiy : optionsEntities) {
+                OptionModel optionModel = new OptionModel();
+                optionModel.setId(optionEntiy.getIdOption());
+                optionModel.setValeur(optionEntiy.getValeur());
+                optionsModel.add(optionModel);
+            }
+            questionModel.setOptions(optionsModel);
+            questionsModels.add(questionModel);
+        }
+        return questionsModels;
     }
 }
